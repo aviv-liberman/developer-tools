@@ -2,12 +2,12 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from public directory
-app.use(express.static('public'));
+// Serve static files from root directory
+app.use(express.static('.'));
 
 // Serve index.html at root
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 
 app.listen(PORT, () => {

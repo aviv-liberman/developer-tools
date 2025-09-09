@@ -2,9 +2,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Serve static files from root directory
-app.use(express.static('.'));
-
 // Serve index.html at root
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');

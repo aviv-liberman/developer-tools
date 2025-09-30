@@ -3,7 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JSON Diff Visualization</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Developer Tools - JSON Diff, Text Converter, URL Breakdown & Analytics</title>
+    <meta name="title" content="Developer Tools - JSON Diff, Text Converter, URL Breakdown & Analytics">
+    <meta name="description" content="Essential developer tools for JSON comparison, text case conversion, URL breakdown, and JSON analytics. Free online tools for developers.">
+    <meta name="keywords" content="JSON diff, JSON comparison, text converter, case converter, URL breakdown, JSON analytics, developer tools, online tools">
+    <meta name="author" content="Developer Tools">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aviv-liberman.github.io/developer-tools/">
+    <meta property="og:title" content="Developer Tools - JSON Diff, Text Converter, URL Breakdown & Analytics">
+    <meta property="og:description" content="Essential developer tools for JSON comparison, text case conversion, URL breakdown, and JSON analytics. Free online tools for developers.">
+    <meta property="og:image" content="https://aviv-liberman.github.io/developer-tools/favicon-192x192.png">
+    <meta property="og:site_name" content="Developer Tools">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aviv-liberman.github.io/developer-tools/">
+    <meta property="twitter:title" content="Developer Tools - JSON Diff, Text Converter, URL Breakdown & Analytics">
+    <meta property="twitter:description" content="Essential developer tools for JSON comparison, text case conversion, URL breakdown, and JSON analytics. Free online tools for developers.">
+    <meta property="twitter:image" content="https://aviv-liberman.github.io/developer-tools/favicon-192x192.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./favicon-512x512.png">
+    <link rel="manifest" href="./site.webmanifest">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3B82F6">
+    <meta name="msapplication-TileColor" content="#3B82F6">
+    
+    <!-- Security -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
+    <!-- Performance -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- External Resources -->
     <script src="https://cdn.jsdelivr.net/npm/jsondiffpatch@0.4.1/dist/jsondiffpatch.umd.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsondiffpatch@0.4.1/dist/formatters-styles/html.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,32 +64,38 @@
     </style>
 </head>
 <body class="m-0 p-5 font-sans bg-gray-100">
-    <div class="max-w-6xl mx-auto bg-white p-5 rounded-lg shadow-lg">
-        <h1 class="text-3xl font-bold text-gray-800 mb-2">Developer Tools</h1>
-        <p class="text-gray-600 mb-8">Essential tools for developers - JSON comparison, text case conversion, URL breakdown, and JSON analytics.</p>
+    <main class="max-w-6xl mx-auto bg-white p-5 rounded-lg shadow-lg">
+        <header>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Developer Tools</h1>
+            <p class="text-gray-600 mb-8">Essential tools for developers - JSON comparison, text case conversion, URL breakdown, and JSON analytics.</p>
+        </header>
         
         <!-- Tab Navigation -->
-        <div class="mb-8">
+        <nav class="mb-8" role="tablist" aria-label="Developer Tools Navigation">
             <div class="border-b border-gray-200">
-                <nav class="-mb-px flex space-x-8">
-                    <button id="json-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm border-blue-500 text-blue-600" onclick="switchTab('json')">
+                <div class="-mb-px flex space-x-8">
+                    <button id="json-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm border-blue-500 text-blue-600" 
+                            role="tab" aria-selected="true" aria-controls="json-tool" tabindex="0" onclick="switchTab('json')">
                         JSON Diff Tool
                     </button>
-                    <button id="case-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 border-transparent text-gray-500" onclick="switchTab('case')">
+                    <button id="case-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 border-transparent text-gray-500" 
+                            role="tab" aria-selected="false" aria-controls="case-tool" tabindex="-1" onclick="switchTab('case')">
                         Text Case Converter
                     </button>
-                    <button id="url-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 border-transparent text-gray-500" onclick="switchTab('url')">
+                    <button id="url-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 border-transparent text-gray-500" 
+                            role="tab" aria-selected="false" aria-controls="url-tool" tabindex="-1" onclick="switchTab('url')">
                         URL Breakdown
                     </button>
-                    <button id="analytics-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 border-transparent text-gray-500" onclick="switchTab('analytics')">
+                    <button id="analytics-tab" class="tab-button py-2 px-1 border-b-2 font-medium text-sm hover:text-gray-700 border-transparent text-gray-500" 
+                            role="tab" aria-selected="false" aria-controls="analytics-tool" tabindex="-1" onclick="switchTab('analytics')">
                         JSON Analytics
                     </button>
-                </nav>
+                </div>
             </div>
-        </div>
+        </nav>
         
         <!-- JSON Diff Tool Tab -->
-        <div id="json-tool" class="tab-content" style="display: block;">
+        <section id="json-tool" class="tab-content" role="tabpanel" aria-labelledby="json-tab" style="display: block;">
         
         <!-- Input Method Selection -->
         <div class="mb-8">
@@ -117,7 +172,7 @@
         </div>
         
         <!-- Text Case Converter Tab -->
-        <div id="case-tool" class="tab-content" style="display: none;">
+        <section id="case-tool" class="tab-content" role="tabpanel" aria-labelledby="case-tab" style="display: none;">
             <h2 class="text-xl font-semibold text-gray-700 mb-4">Text Case Converter</h2>
             <p class="text-gray-600 mb-6">Convert your text to different case formats. Click on any result to copy to clipboard.</p>
             
@@ -132,7 +187,7 @@
         </div>
 
         <!-- URL Breakdown Tab -->
-        <div id="url-tool" class="tab-content" style="display: none;">
+        <section id="url-tool" class="tab-content" role="tabpanel" aria-labelledby="url-tab" style="display: none;">
             <h2 class="text-xl font-semibold text-gray-700 mb-4">URL Breakdown</h2>
             <p class="text-gray-600 mb-6">Analyze and breakdown a URL into its components.</p>
             
@@ -169,7 +224,7 @@
         </div>
 
         <!-- JSON Analytics Tab -->
-        <div id="analytics-tool" class="tab-content" style="display: none;">
+        <section id="analytics-tool" class="tab-content" role="tabpanel" aria-labelledby="analytics-tab" style="display: none;">
             <h2 class="text-xl font-semibold text-gray-700 mb-4">JSON Analytics</h2>
             <p class="text-gray-600 mb-6">Analyze JSON structure, validate format, and get detailed insights about your JSON data.</p>
             
@@ -280,8 +335,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script>
         let file1Data = null;
@@ -830,6 +885,8 @@
             tabButtons.forEach(button => {
                 button.classList.remove('border-blue-500', 'text-blue-600');
                 button.classList.add('border-transparent', 'text-gray-500');
+                button.setAttribute('aria-selected', 'false');
+                button.setAttribute('tabindex', '-1');
             });
             
             // Show selected tab content
@@ -843,6 +900,8 @@
             if (selectedButton) {
                 selectedButton.classList.remove('border-transparent', 'text-gray-500');
                 selectedButton.classList.add('border-blue-500', 'text-blue-600');
+                selectedButton.setAttribute('aria-selected', 'true');
+                selectedButton.setAttribute('tabindex', '0');
             }
         }
 
@@ -1472,10 +1531,48 @@
             }
         }
 
+        // Keyboard navigation for tabs
+        function handleTabKeydown(event) {
+            const tabs = Array.from(document.querySelectorAll('.tab-button'));
+            const currentIndex = tabs.indexOf(event.target);
+            let newIndex = currentIndex;
+            
+            switch(event.key) {
+                case 'ArrowLeft':
+                    newIndex = currentIndex > 0 ? currentIndex - 1 : tabs.length - 1;
+                    break;
+                case 'ArrowRight':
+                    newIndex = currentIndex < tabs.length - 1 ? currentIndex + 1 : 0;
+                    break;
+                case 'Home':
+                    newIndex = 0;
+                    break;
+                case 'End':
+                    newIndex = tabs.length - 1;
+                    break;
+                default:
+                    return;
+            }
+            
+            event.preventDefault();
+            tabs[newIndex].focus();
+            const tabName = tabs[newIndex].id.replace('-tab', '');
+            switchTab(tabName);
+        }
+        
+        // Add keyboard event listeners to tabs
+        function setupTabNavigation() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.addEventListener('keydown', handleTabKeydown);
+            });
+        }
+
         // Initialize the app
         window.addEventListener('load', () => {
             setupDragAndDrop();
             setupAnalyticsDragAndDrop();
+            setupTabNavigation();
             // Initialize case converter with empty state
             convertCases();
             // Initialize URL breakdown with empty state

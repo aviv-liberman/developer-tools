@@ -172,13 +172,98 @@
             <h2 class="text-xl font-semibold text-gray-700 mb-4">Text Case Converter</h2>
             <p class="text-gray-600 mb-6">Convert your text to different case formats. Click on any result to copy to clipboard.</p>
             
+            <!-- Input Method Selection -->
             <div class="mb-6">
-                <label for="case-input" class="block text-sm font-medium text-gray-700 mb-2">Enter your text:</label>
-                <textarea id="case-input" placeholder="Type or paste your text here..." class="w-full h-32 p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" oninput="convertCases()"></textarea>
+                <label for="case-input-method" class="block text-sm font-medium text-gray-700 mb-2">Choose Input Method:</label>
+                <select id="case-input-method" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" onchange="toggleCaseInputMethod()">
+                    <option value="text">Convert Text Case</option>
+                    <option value="json">Convert JSON Keys Case</option>
+                </select>
             </div>
-            
-            <div id="case-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <div class="col-span-full text-center text-gray-500 italic">Enter some text to see case conversions</div>
+
+            <!-- Text Case Conversion Section -->
+            <div id="text-case-section">
+                <div class="mb-6">
+                    <label for="case-input" class="block text-sm font-medium text-gray-700 mb-2">Enter your text:</label>
+                    <textarea id="case-input" placeholder="Type or paste your text here..." class="w-full h-32 p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" oninput="convertCases()"></textarea>
+                </div>
+                
+                <div id="case-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="col-span-full text-center text-gray-500 italic">Enter some text to see case conversions</div>
+                </div>
+            </div>
+
+            <!-- JSON Case Conversion Section -->
+            <div id="json-case-section" style="display: none;">
+                <!-- JSON Input Method Selection -->
+                <div class="mb-6">
+                    <label for="json-case-input-method" class="block text-sm font-medium text-gray-700 mb-2">Choose JSON Input Method:</label>
+                    <select id="json-case-input-method" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" onchange="toggleJsonCaseInputMethod()">
+                        <option value="paste">Paste JSON Content</option>
+                        <option value="file">Upload JSON File</option>
+                    </select>
+                </div>
+
+                <!-- JSON File Upload Section -->
+                <div id="json-case-file-section" class="mb-6" style="display: none;">
+                    <div class="p-6 border-2 border-dashed border-gray-300 rounded-lg text-center bg-gray-50 transition-colors duration-300 hover:border-blue-500" id="json-case-file-upload">
+                        <label for="json-case-file" class="cursor-pointer text-blue-600 font-bold hover:text-blue-800">
+                            <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                            </svg>
+                            Choose JSON File<br>
+                            <small class="text-gray-500">or drag and drop here</small>
+                        </label>
+                        <input type="file" id="json-case-file" accept=".json" onchange="handleJsonCaseFileSelect(this)" class="hidden">
+                        <div class="mt-2 text-sm text-gray-600" id="json-case-file-info"></div>
+                    </div>
+                </div>
+
+                <!-- JSON Paste Section -->
+                <div id="json-case-paste-section" class="mb-6">
+                    <label for="json-case-input" class="block text-sm font-medium text-gray-700 mb-2">Paste your JSON:</label>
+                    <textarea 
+                        id="json-case-input" 
+                        placeholder="Paste your JSON here..."
+                        class="w-full h-40 p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        oninput="convertJsonCases()"
+                    ></textarea>
+                    <div class="mt-2 text-sm" id="json-case-input-info"></div>
+                </div>
+
+                <!-- Case Selection -->
+                <div class="mb-6">
+                    <label for="json-case-type" class="block text-sm font-medium text-gray-700 mb-2">Choose target case for JSON keys:</label>
+                    <select id="json-case-type" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" onchange="convertJsonCases()">
+                        <option value="camelCase">camelCase</option>
+                        <option value="PascalCase">PascalCase</option>
+                        <option value="snake_case">snake_case</option>
+                        <option value="kebab-case">kebab-case</option>
+                        <option value="UPPER_SNAKE_CASE">UPPER_SNAKE_CASE</option>
+                        <option value="UPPER CASE">UPPER CASE</option>
+                        <option value="lower case">lower case</option>
+                        <option value="Title Case">Title Case</option>
+                        <option value="Sentence case">Sentence case</option>
+                        <option value="dot.case">dot.case</option>
+                        <option value="path/case">path/case</option>
+                        <option value="Header-Case">Header-Case</option>
+                        <option value="no case">no case</option>
+                    </select>
+                </div>
+
+                <button class="w-full py-3 bg-blue-600 text-white border-none rounded-lg text-base font-bold cursor-pointer mb-6 transition-colors duration-300 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed" id="convert-json-case-btn" onclick="convertJsonCases()" disabled>
+                    Convert JSON Keys Case
+                </button>
+
+                <!-- JSON Case Conversion Results -->
+                <div id="json-case-results" style="display: none;">
+                    <div class="mb-4">
+                        <button onclick="copyJsonCaseResult()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                            Copy Converted JSON
+                        </button>
+                    </div>
+                    <pre id="json-case-output" class="bg-gray-100 p-4 rounded border overflow-auto max-h-96 text-sm"></pre>
+                </div>
             </div>
         </section>
 

@@ -20,6 +20,13 @@
 - Click any result to copy to clipboard
 - Works with any input format
 
+### 📝 **JSON Keys Case Converter**
+- Convert JSON object keys to any case format
+- Support for nested objects and arrays
+- Upload JSON files or paste content directly
+- Preserve all values while converting keys
+- One-click copy converted JSON
+
 ### 🔗 **URL Breakdown**
 - Analyze any URL into components
 - Extract protocol, hostname, path, query parameters
@@ -42,11 +49,11 @@
 
 ## 💡 Use Cases
 
-- **API Development**: Compare API responses, validate JSON schemas
-- **Data Analysis**: Convert text formats, analyze JSON structure
-- **Debugging**: Break down URLs, compare configuration files
-- **Documentation**: Format JSON for documentation
-- **Learning**: Understand JSON structure and URL components
+- **API Development**: Compare API responses, validate JSON schemas, convert API key formats
+- **Data Analysis**: Convert text formats, analyze JSON structure, standardize data keys
+- **Debugging**: Break down URLs, compare configuration files, normalize JSON keys
+- **Documentation**: Format JSON for documentation, convert between naming conventions
+- **Learning**: Understand JSON structure and URL components, practice case conversions
 
 ## 🌟 Features
 

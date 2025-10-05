@@ -63,7 +63,7 @@
     <main class="max-w-6xl mx-auto bg-white p-5 rounded-lg shadow-lg">
         <header>
             <h1 class="text-3xl font-bold text-gray-800 mb-2">Developer Tools</h1>
-            <p class="text-gray-600 mb-8">Essential tools for developers - JSON comparison, text case conversion, URL breakdown, and JSON analytics.</p>
+            <p class="text-gray-600 mb-8">Professional developer utilities for JSON comparison, text case conversion, URL analysis, and JSON analytics.</p>
         </header>
         
         <!-- Tab Navigation -->
@@ -104,20 +104,20 @@
 
         <!-- File Upload Section -->
         <div id="file-upload-section" class="mb-8" style="display: none;">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">Upload JSON Files</h2>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Upload JSON Files</h2>
             <div class="flex gap-5 mb-8 flex-wrap">
-                <div class="flex-1 min-w-80 p-5 border-2 border-dashed border-gray-300 rounded-lg text-center bg-gray-50 transition-colors duration-300 hover:border-blue-500" id="file1-upload">
-                    <label for="file1" class="cursor-pointer text-blue-600 font-bold hover:text-blue-800">
-                        Choose First JSON File<br>
+                <div class="flex-1 min-w-80 p-6 border-2 border-dashed border-gray-300 rounded-lg text-center bg-gray-50 transition-colors duration-300 hover:border-blue-500" id="file1-upload">
+                    <label for="file1" class="cursor-pointer text-blue-600 font-semibold hover:text-blue-800">
+                        Select First JSON File<br>
                         <small class="text-gray-500">or drag and drop here</small>
                     </label>
                     <input type="file" id="file1" accept=".json" onchange="handleFileSelect(this, 'file1')" class="hidden">
                     <div class="mt-2 text-sm text-gray-600" id="file1-info"></div>
                 </div>
                 
-                <div class="flex-1 min-w-80 p-5 border-2 border-dashed border-gray-300 rounded-lg text-center bg-gray-50 transition-colors duration-300 hover:border-blue-500" id="file2-upload">
-                    <label for="file2" class="cursor-pointer text-blue-600 font-bold hover:text-blue-800">
-                        Choose Second JSON File<br>
+                <div class="flex-1 min-w-80 p-6 border-2 border-dashed border-gray-300 rounded-lg text-center bg-gray-50 transition-colors duration-300 hover:border-blue-500" id="file2-upload">
+                    <label for="file2" class="cursor-pointer text-blue-600 font-semibold hover:text-blue-800">
+                        Select Second JSON File<br>
                         <small class="text-gray-500">or drag and drop here</small>
                     </label>
                     <input type="file" id="file2" accept=".json" onchange="handleFileSelect(this, 'file2')" class="hidden">
@@ -128,7 +128,7 @@
 
         <!-- JSON Paste Section -->
         <div id="json-paste-section" class="mb-8">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">Paste JSON Content</h2>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Paste JSON Content</h2>
             <div class="flex gap-5 mb-4 flex-wrap">
                 <div class="flex-1 min-w-80">
                     <label for="json1" class="block text-sm font-medium text-gray-700 mb-2">First JSON:</label>
@@ -156,11 +156,11 @@
             </div>
         </div>
         
-        <button class="w-full py-4 bg-blue-600 text-white border-none rounded-lg text-base font-bold cursor-pointer my-5 transition-colors duration-300 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed" id="compare-btn" onclick="compareFiles()" disabled>
+        <button class="w-full py-3 bg-blue-600 text-white border-none rounded-lg text-base font-semibold cursor-pointer mb-6 transition-colors duration-300 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed" id="compare-btn" onclick="compareFiles()" disabled>
             Compare JSON Files
         </button>
         
-        <button class="bg-gray-600 text-white border-none py-2 px-5 rounded cursor-pointer my-2 text-sm hover:bg-gray-700 active:bg-blue-600" id="toggle-btn" onclick="toggleDiffView()" style="display: none;">
+        <button class="bg-gray-600 text-white border-none py-2 px-4 rounded-lg cursor-pointer mb-4 text-sm font-medium hover:bg-gray-700 active:bg-blue-600 transition-colors duration-300" id="toggle-btn" onclick="toggleDiffView()" style="display: none;">
             Show Only Differences
         </button>
         <div id="diff-container"></div>
@@ -168,8 +168,8 @@
         
         <!-- Text Case Converter Tab -->
         <section id="case" class="tab-content" role="tabpanel" aria-labelledby="case-tab" style="display: none;">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">Text Case Converter</h2>
-            <p class="text-gray-600 mb-6">Convert your text to different case formats. Click on any result to copy to clipboard.</p>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Text Case Converter</h2>
+            <p class="text-gray-600 mb-6">Convert text to different case formats. Click any result to copy to clipboard.</p>
             
             <!-- Input Method Selection -->
             <div class="mb-6">
@@ -183,12 +183,12 @@
             <!-- Text Case Conversion Section -->
             <div id="text-case-section">
                 <div class="mb-6">
-                    <label for="case-input" class="block text-sm font-medium text-gray-700 mb-2">Enter your text:</label>
+                    <label for="case-input" class="block text-sm font-medium text-gray-700 mb-2">Enter Text:</label>
                     <textarea id="case-input" placeholder="Type or paste your text here..." class="w-full h-32 p-3 border border-gray-300 rounded-lg resize-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" oninput="convertCases()"></textarea>
                 </div>
                 
                 <div id="case-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div class="col-span-full text-center text-gray-500 italic">Enter some text to see case conversions</div>
+                    <div class="col-span-full text-center text-gray-500 italic">Enter text to view case conversions</div>
                 </div>
             </div>
 
@@ -206,11 +206,11 @@
                 <!-- JSON File Upload Section -->
                 <div id="json-case-file-section" class="mb-6" style="display: none;">
                     <div class="p-6 border-2 border-dashed border-gray-300 rounded-lg text-center bg-gray-50 transition-colors duration-300 hover:border-blue-500" id="json-case-file-upload">
-                        <label for="json-case-file" class="cursor-pointer text-blue-600 font-bold hover:text-blue-800">
+                        <label for="json-case-file" class="cursor-pointer text-blue-600 font-semibold hover:text-blue-800">
                             <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                             </svg>
-                            Choose JSON File<br>
+                            Select JSON File<br>
                             <small class="text-gray-500">or drag and drop here</small>
                         </label>
                         <input type="file" id="json-case-file" accept=".json" onchange="handleJsonCaseFileSelect(this)" class="hidden">
@@ -220,7 +220,7 @@
 
                 <!-- JSON Paste Section -->
                 <div id="json-case-paste-section" class="mb-6">
-                    <label for="json-case-input" class="block text-sm font-medium text-gray-700 mb-2">Paste your JSON:</label>
+                    <label for="json-case-input" class="block text-sm font-medium text-gray-700 mb-2">Paste JSON Content:</label>
                     <textarea 
                         id="json-case-input" 
                         placeholder="Paste your JSON here..."
@@ -232,7 +232,7 @@
 
                 <!-- Case Selection -->
                 <div class="mb-6">
-                    <label for="json-case-type" class="block text-sm font-medium text-gray-700 mb-2">Choose target case for JSON keys:</label>
+                    <label for="json-case-type" class="block text-sm font-medium text-gray-700 mb-2">Select Target Case for JSON Keys:</label>
                     <select id="json-case-type" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" onchange="convertJsonCases()">
                         <option value="camelCase">camelCase</option>
                         <option value="PascalCase">PascalCase</option>
@@ -250,34 +250,34 @@
                     </select>
                 </div>
 
-                <button class="w-full py-3 bg-blue-600 text-white border-none rounded-lg text-base font-bold cursor-pointer mb-6 transition-colors duration-300 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed" id="convert-json-case-btn" onclick="convertJsonCases()" disabled>
+                <button class="w-full py-3 bg-blue-600 text-white border-none rounded-lg text-base font-semibold cursor-pointer mb-6 transition-colors duration-300 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed" id="convert-json-case-btn" onclick="convertJsonCases()" disabled>
                     Convert JSON Keys Case
                 </button>
 
                 <!-- JSON Case Conversion Results -->
                 <div id="json-case-results" style="display: none;">
                     <div class="mb-4">
-                        <button onclick="copyJsonCaseResult(event)" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors">
+                        <button onclick="copyJsonCaseResult(event)" class="bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors duration-300">
                             Copy Converted JSON
                         </button>
                     </div>
-                    <pre id="json-case-output" class="bg-gray-100 p-4 rounded border overflow-auto max-h-96 text-sm"></pre>
+                    <pre id="json-case-output" class="bg-gray-100 p-4 rounded-lg border overflow-auto max-h-96 text-sm"></pre>
                 </div>
             </div>
         </section>
 
         <!-- URL Breakdown Tab -->
         <section id="url" class="tab-content" role="tabpanel" aria-labelledby="url-tab" style="display: none;">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">URL Breakdown</h2>
-            <p class="text-gray-600 mb-6">Analyze and breakdown a URL into its components.</p>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">URL Breakdown</h2>
+            <p class="text-gray-600 mb-6">Analyze and break down URLs into their component parts.</p>
             
-                         <div class="mb-6">
-                 <label for="url-input" class="block text-sm font-medium text-gray-700 mb-2">Enter a URL:</label>
-                 <input type="url" id="url-input" placeholder="https://example.com/path/to/resource?query=value#fragment" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" oninput="breakdownURL()" onpaste="breakdownURL()">
-                 <button onclick="breakdownURL()" class="mt-3 bg-blue-600 text-white border-none py-2 px-5 rounded cursor-pointer text-sm hover:bg-blue-700 active:bg-blue-800">
-                     Breakdown URL
-                 </button>
-             </div>
+            <div class="mb-6">
+                <label for="url-input" class="block text-sm font-medium text-gray-700 mb-2">Enter URL:</label>
+                <input type="url" id="url-input" placeholder="https://example.com/path/to/resource?query=value#fragment" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" oninput="breakdownURL()" onpaste="breakdownURL()">
+                <button onclick="breakdownURL()" class="mt-3 bg-blue-600 text-white border-none py-2 px-4 rounded-lg cursor-pointer text-sm font-medium hover:bg-blue-700 active:bg-blue-800 transition-colors duration-300">
+                    Analyze URL
+                </button>
+            </div>
 
             <div id="url-results" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
@@ -305,8 +305,8 @@
 
         <!-- JSON Analytics Tab -->
         <section id="analytics" class="tab-content" role="tabpanel" aria-labelledby="analytics-tab" style="display: none;">
-            <h2 class="text-xl font-semibold text-gray-700 mb-4">JSON Analytics</h2>
-            <p class="text-gray-600 mb-6">Analyze JSON structure, validate format, and get detailed insights about your JSON data.</p>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">JSON Analytics</h2>
+            <p class="text-gray-600 mb-6">Analyze JSON structure, validate format, and obtain detailed insights about your data.</p>
             
             <!-- Input Method Selection -->
             <div class="mb-6">
@@ -320,11 +320,11 @@
             <!-- File Upload Section -->
             <div id="analytics-file-section" class="mb-6" style="display: none;">
                 <div class="p-6 border-2 border-dashed border-gray-300 rounded-lg text-center bg-gray-50 transition-colors duration-300 hover:border-blue-500" id="analytics-file-upload">
-                    <label for="analytics-file" class="cursor-pointer text-blue-600 font-bold hover:text-blue-800">
+                    <label for="analytics-file" class="cursor-pointer text-blue-600 font-semibold hover:text-blue-800">
                         <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
                         </svg>
-                        Choose JSON File<br>
+                        Select JSON File<br>
                         <small class="text-gray-500">or drag and drop here</small>
                     </label>
                     <input type="file" id="analytics-file" accept=".json" onchange="handleAnalyticsFileSelect(this)" class="hidden">
@@ -334,7 +334,7 @@
 
             <!-- JSON Paste Section -->
             <div id="analytics-paste-section" class="mb-6">
-                <label for="analytics-json" class="block text-sm font-medium text-gray-700 mb-2">Paste your JSON:</label>
+                <label for="analytics-json" class="block text-sm font-medium text-gray-700 mb-2">Paste JSON Content:</label>
                 <textarea 
                     id="analytics-json" 
                     placeholder="Paste your JSON here..."
@@ -344,7 +344,7 @@
                 <div class="mt-2 text-sm" id="analytics-json-info"></div>
             </div>
 
-            <button class="w-full py-3 bg-green-600 text-white border-none rounded-lg text-base font-bold cursor-pointer mb-6 transition-colors duration-300 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed" id="analyze-btn" onclick="analyzeJSON()" disabled>
+            <button class="w-full py-3 bg-green-600 text-white border-none rounded-lg text-base font-semibold cursor-pointer mb-6 transition-colors duration-300 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed" id="analyze-btn" onclick="analyzeJSON()" disabled>
                 Analyze JSON
             </button>
 
@@ -407,11 +407,11 @@
                     <!-- Formatted Tab -->
                     <div id="formatted-content" class="analytics-tab-content p-6" style="display: none;">
                         <div class="mb-4">
-                            <button onclick="copyFormattedJSON()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors">
+                            <button onclick="copyFormattedJSON()" class="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-300">
                                 Copy Formatted JSON
                             </button>
                         </div>
-                        <pre id="formatted-json" class="bg-gray-100 p-4 rounded border overflow-auto max-h-96 text-sm"></pre>
+                        <pre id="formatted-json" class="bg-gray-100 p-4 rounded-lg border overflow-auto max-h-96 text-sm"></pre>
                     </div>
                 </div>
             </div>

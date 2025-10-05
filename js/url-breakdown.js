@@ -25,10 +25,10 @@ function breakdownURL() {
         
         // Protocol
         resultsHTML += `
-            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.protocol.replace(':', '')}', 'Protocol', this)">
                 <h3 class="text-lg font-medium text-gray-700 mb-2">Protocol</h3>
-                <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.protocol.replace(':', '')}', 'Protocol')">${url.protocol.replace(':', '')}</p>
-                <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                <p class="text-gray-900 font-mono text-sm break-all">${url.protocol.replace(':', '')}</p>
+                <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
             </div>
         `;
         
@@ -36,19 +36,19 @@ function breakdownURL() {
         if (url.username || url.password) {
             if (url.username) {
                 resultsHTML += `
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.username}', 'Username', this)">
                         <h3 class="text-lg font-medium text-gray-700 mb-2">Username</h3>
-                        <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.username}', 'Username')">${url.username}</p>
-                        <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                        <p class="text-gray-900 font-mono text-sm break-all">${url.username}</p>
+                        <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
                     </div>
                 `;
             }
             if (url.password) {
                 resultsHTML += `
-                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.password}', 'Password', this)">
                         <h3 class="text-lg font-medium text-gray-700 mb-2">Password</h3>
-                        <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.password}', 'Password')">${url.password}</p>
-                        <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                        <p class="text-gray-900 font-mono text-sm break-all">${url.password}</p>
+                        <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
                     </div>
                 `;
             }
@@ -56,39 +56,39 @@ function breakdownURL() {
         
         // Hostname
         resultsHTML += `
-            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.hostname}', 'Hostname', this)">
                 <h3 class="text-lg font-medium text-gray-700 mb-2">Hostname</h3>
-                <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.hostname}', 'Hostname')">${url.hostname}</p>
-                <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                <p class="text-gray-900 font-mono text-sm break-all">${url.hostname}</p>
+                <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
             </div>
         `;
         
         // Origin (protocol + hostname + port)
         resultsHTML += `
-            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.origin}', 'Origin', this)">
                 <h3 class="text-lg font-medium text-gray-700 mb-2">Origin</h3>
-                <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.origin}', 'Origin')">${url.origin}</p>
-                <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                <p class="text-gray-900 font-mono text-sm break-all">${url.origin}</p>
+                <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
             </div>
         `;
         
         // Port (if exists)
         if (url.port) {
             resultsHTML += `
-                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.port}', 'Port', this)">
                     <h3 class="text-lg font-medium text-gray-700 mb-2">Port</h3>
-                    <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.port}', 'Port')">${url.port}</p>
-                    <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                    <p class="text-gray-900 font-mono text-sm break-all">${url.port}</p>
+                    <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
                 </div>
             `;
         }
         
         // Pathname
         resultsHTML += `
-            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.pathname || '/'}', 'Path', this)">
                 <h3 class="text-lg font-medium text-gray-700 mb-2">Path</h3>
-                <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.pathname || '/'}', 'Path')">${url.pathname || '/'}</p>
-                <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                <p class="text-gray-900 font-mono text-sm break-all">${url.pathname || '/'}</p>
+                <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
             </div>
         `;
         
@@ -158,10 +158,10 @@ function breakdownURL() {
         // Fragment
         if (url.hash) {
             resultsHTML += `
-                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 cursor-pointer hover:bg-gray-100 transition-colors" onclick="copyToClipboard('${url.hash.replace('#', '')}', 'Fragment', this)">
                     <h3 class="text-lg font-medium text-gray-700 mb-2">Fragment</h3>
-                    <p class="text-gray-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.hash.replace('#', '')}', 'Fragment')">${url.hash.replace('#', '')}</p>
-                    <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                    <p class="text-gray-900 font-mono text-sm break-all">${url.hash.replace('#', '')}</p>
+                    <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
                 </div>
             `;
         } else {
@@ -175,10 +175,10 @@ function breakdownURL() {
         
         // Full URL
         resultsHTML += `
-            <div class="col-span-full bg-blue-50 p-4 rounded-lg border border-blue-200">
+            <div class="col-span-full bg-blue-50 p-4 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors" onclick="copyToClipboard('${url.href}', 'Full URL', this)">
                 <h3 class="text-lg font-medium text-blue-700 mb-2">Full URL</h3>
-                <p class="text-blue-900 font-mono text-sm break-all cursor-pointer" onclick="copyToClipboard('${url.href}', 'Full URL')">${url.href}</p>
-                <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                <p class="text-blue-900 font-mono text-sm break-all">${url.href}</p>
+                <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
             </div>
         `;
         

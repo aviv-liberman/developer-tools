@@ -1,9 +1,45 @@
 // Common utility functions
 
 // Copy to clipboard functionality
-function copyToClipboard(text, caseType) {
+function copyToClipboard(text, caseType, clickedElement) {
     navigator.clipboard.writeText(text).then(() => {
         showMessage(`"${caseType}" copied to clipboard!`, 'success');
+        
+        // Add visual feedback on the clicked element
+        const element = clickedElement;
+        
+        if (element) {
+            // Add a "Copied!" indicator
+            const copiedIndicator = document.createElement('div');
+            copiedIndicator.className = 'absolute top-2 right-2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg';
+            copiedIndicator.textContent = '✓ Copied!';
+            copiedIndicator.style.zIndex = '1000';
+            
+            // Make parent relative if not already
+            const computedPosition = window.getComputedStyle(element).position;
+            const originalPosition = element.style.position;
+            if (computedPosition === 'static') {
+                element.style.position = 'relative';
+            }
+            
+            element.appendChild(copiedIndicator);
+            
+            // Flash the background
+            const originalBgColor = element.style.backgroundColor;
+            element.style.transition = 'background-color 0.3s ease';
+            element.style.backgroundColor = '#d1fae5'; // green-100
+            
+            // Remove indicator and restore background after 1.5 seconds
+            setTimeout(() => {
+                if (copiedIndicator.parentNode) {
+                    copiedIndicator.remove();
+                }
+                element.style.backgroundColor = originalBgColor;
+                if (computedPosition === 'static') {
+                    element.style.position = originalPosition;
+                }
+            }, 1500);
+        }
     }).catch(err => {
         console.error('Failed to copy: ', err);
         showMessage('Failed to copy to clipboard', 'error');

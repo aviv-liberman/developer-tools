@@ -59,8 +59,7 @@ function handleFileSelect(input, fileId) {
                 
                 updateCompareButton();
             } catch (error) {
-                showMessage(`Error parsing ${file.name}: ${error.message}`, 'error');
-                document.getElementById(`${fileId}-info`).innerHTML = '';
+                document.getElementById(`${fileId}-info`).innerHTML = `<span class="text-red-600">✗ Invalid JSON: ${error.message}</span>`;
                 if (fileId === 'file1') {
                     file1Data = null;
                 } else {
@@ -161,7 +160,8 @@ function setupDragAndDrop() {
                     
                     handleFileSelect(input, fileId);
                 } else {
-                    showMessage('Please select a JSON file', 'error');
+                    // Show error in console or ignore
+                    console.warn('Please select a JSON file');
                 }
             }
         });
@@ -199,12 +199,8 @@ function compareFiles() {
     }
     
     if (!firstData || !secondData) {
-        const methodText = currentInputMethod === 'files' ? 'upload JSON files' : 'paste JSON content';
-        showMessage(`Please ${methodText}`, 'error');
         return;
     }
-
-    clearMessage();
     
     try {
         // Wait for jsondiffpatch to be available
@@ -233,17 +229,14 @@ function compareFiles() {
             diffContainer.classList.remove('show-only-diffs');
             toggleBtn.textContent = 'Show Only Differences';
             toggleBtn.classList.remove('bg-blue-600');
-            
-            showMessage('Differences found and displayed below', 'success');
         } else {
             diffContainer.innerHTML = '<div class="text-center p-10 text-gray-600 italic">No differences found between the JSON files</div>';
             toggleBtn.style.display = 'none';
-            showMessage('No differences found between the JSON files', 'success');
         }
     } catch (error) {
         console.error('Error:', error);
-        showMessage(`Error comparing files: ${error.message}`, 'error');
-        document.getElementById('diff-container').innerHTML = '';
+        const diffContainer = document.getElementById('diff-container');
+        diffContainer.innerHTML = '<div class="text-center p-10 text-red-600">Error comparing files: ' + error.message + '</div>';
         document.getElementById('toggle-btn').style.display = 'none';
     }
 }

@@ -27,15 +27,15 @@ function convertCases() {
         { name: 'swap case', convert: toSwapCase }
     ];
     
-    const resultsHTML = cases.map(caseType => {
+    const resultsHTML = cases.map((caseType, index) => {
         try {
             const converted = caseType.convert(input);
             return `
-                <div class="bg-gray-50 p-4 rounded-lg border hover:border-blue-300 transition-colors cursor-pointer" 
-                     onclick="copyToClipboard('${converted.replace(/'/g, "\\'")}', '${caseType.name}')">
+                <div id="case-card-${index}" class="bg-gray-50 p-4 rounded-lg border hover:border-blue-300 transition-colors cursor-pointer" 
+                     onclick="copyToClipboard('${converted.replace(/'/g, "\\'")}', '${caseType.name}', document.getElementById('case-card-${index}'))">
                     <div class="text-sm font-medium text-gray-700 mb-2">${caseType.name}</div>
                     <div class="text-gray-900 font-mono text-sm break-all">${converted}</div>
-                    <div class="text-xs text-blue-600 mt-2">Click to copy</div>
+                    <div class="text-xs text-blue-600 mt-2">Click here to copy</div>
                 </div>
             `;
         } catch (error) {
@@ -317,14 +317,11 @@ function copyJsonCaseResult(event) {
     const output = document.getElementById('json-case-output').textContent;
     if (output) {
         navigator.clipboard.writeText(output).then(() => {
-            // Show temporary success message
             const button = event.target;
             const originalText = button.textContent;
-            button.textContent = 'Copied!';
-            button.className = 'bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors';
+            button.textContent = '✓ Copied!';
             setTimeout(() => {
                 button.textContent = originalText;
-                button.className = 'bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition-colors';
             }, 2000);
         }).catch(err => {
             console.error('Failed to copy: ', err);

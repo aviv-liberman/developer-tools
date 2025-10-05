@@ -49,6 +49,12 @@ function copyToClipboard(text, caseType, clickedElement) {
 // Show message
 function showMessage(message, type = 'info') {
     const container = document.getElementById('message-container');
+    
+    // If container doesn't exist (e.g., in JSON diff tab), just skip showing the message
+    if (!container) {
+        return;
+    }
+    
     let bgColor, textColor;
     
     switch(type) {
@@ -70,7 +76,10 @@ function showMessage(message, type = 'info') {
 
 // Clear message
 function clearMessage() {
-    document.getElementById('message-container').innerHTML = '';
+    const container = document.getElementById('message-container');
+    if (container) {
+        container.innerHTML = '';
+    }
 }
 
 // Tab switching functionality

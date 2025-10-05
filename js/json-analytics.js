@@ -271,15 +271,21 @@ function updateSchemaTab(analysis) {
     html += '<div class="bg-gray-50 p-4 rounded border">';
     html += '<h4 class="font-semibold text-gray-700 mb-3">Generated Schema</h4>';
     html += '<div class="mb-4">';
-    html += '<button onclick="copyToClipboard(JSON.stringify(' + JSON.stringify(schema) + ', null, 2), \'JSON Schema\')" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 transition-colors">';
+    html += '<button onclick="copySchemaToClipboard()" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700 transition-colors">';
     html += 'Copy Schema';
     html += '</button>';
     html += '</div>';
-    html += '<pre class="bg-white p-4 rounded border overflow-auto max-h-64 text-sm">' + JSON.stringify(schema, null, 2) + '</pre>';
+    html += '<pre class="bg-white p-4 rounded border overflow-auto max-h-64 text-sm" id="schema-output">' + JSON.stringify(schema, null, 2) + '</pre>';
     html += '</div>';
     html += '</div>';
     
     container.innerHTML = html;
+}
+
+function copySchemaToClipboard() {
+    const schema = generateJSONSchema(analyticsData);
+    const schemaText = JSON.stringify(schema, null, 2);
+    copyToClipboard(schemaText, 'JSON Schema', event.target);
 }
 
 function updateValidationTab(analysis) {
@@ -336,7 +342,7 @@ function updateFormattedTab(jsonString) {
 
 function copyFormattedJSON() {
     const formattedJson = JSON.stringify(analyticsData, null, 2);
-    copyToClipboard(formattedJson, 'Formatted JSON');
+    copyToClipboard(formattedJson, 'Formatted JSON', event.target);
 }
 
 function getTypeColor(type) {

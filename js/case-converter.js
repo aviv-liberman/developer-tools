@@ -313,7 +313,7 @@ function convertKeyToCase(key, caseType) {
 }
 
 // Copy the converted JSON result to clipboard
-function copyJsonCaseResult() {
+function copyJsonCaseResult(event) {
     const output = document.getElementById('json-case-output').textContent;
     if (output) {
         navigator.clipboard.writeText(output).then(() => {
